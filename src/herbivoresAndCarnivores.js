@@ -12,9 +12,7 @@ class Animal {
 
   checkHealth() {
     if (this.health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      Animal.alive.splice(index, 1);
+      Animal.alive = Animal.alive.filter((beast) => beast.health > 0);
     }
   }
 }
