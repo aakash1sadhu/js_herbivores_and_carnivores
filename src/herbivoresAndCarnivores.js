@@ -34,16 +34,22 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(target) {
-    if (!(target instanceof Herbivore)) {
+    const herbivores = [target].filter(
+      (beast) => beast.constructor.name === 'Herbivore',
+    );
+
+    if (herbivores.length === 0) {
       return;
     }
 
-    if (target.hidden) {
+    const herb = herbivores[0];
+
+    if (herb.hidden) {
       return;
     }
 
-    target.health -= 50;
-    target.checkHealth();
+    herb.health -= 50;
+    herb.checkHealth();
   }
 }
 
